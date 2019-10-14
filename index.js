@@ -1,3 +1,5 @@
+"use strict";
+
 let Service, Characteristic, api;
 
 const request = require("request");
@@ -9,7 +11,7 @@ module.exports = function (homebridge) {
 
     api = homebridge;
 
-    homebridge.registerAccessory("homebridge-http-fan", "HTTP-FAN", HTTP_FAN);
+    homebridge.registerAccessory("homebridge-http-fancontrol", "HTTP-FAN", HTTP_FAN);
 };
 
 function HTTP_FAN(log, config) {
