@@ -160,7 +160,7 @@ HTTP_FAN.prototype = {
 
         let url = this.rotationSpeed.setUrl;
         if (url)
-            url = this.rotationSpeed.setUrl + "\" + rotationSpeed;
+            url = this.rotationSpeed.setUrl + "/" + rotationSpeed;
 
         this._doRequest("setRotationSpeed", url, this.rotationSpeed.httpMethod, "rotationSpeed.setUrl", callback, function (body) {
             this.log("rotationSpeed successfully set to %s %", rotationSpeed);
