@@ -11,12 +11,13 @@ module.exports = function (homebridge) {
 
     api = homebridge;
 
-    homebridge.registerAccessory("homebridge-http-fanv2", "HTTP-FAN-V2", HTTP_FAN_V2);
+    homebridge.registerAccessory("homebridge-http-fan", "HTTP-FAN", HTTP_FAN);
 };
 
-function HTTP_FAN_V2(log, config) {
+function HTTP_FAN(log, config) {
     this.log = log;
     this.name = config.name;
+    this.api = config.api       ||      "XXX.XXX.XXX.XXX";
 
     this.active = {};
     this.rotationSpeed = { enabled: false };
@@ -67,7 +68,7 @@ function HTTP_FAN_V2(log, config) {
     }
 }
 
-HTTP_FAN_V2.prototype = {
+HTTP_FAN.prototype = {
 
     identify: function (callback) {
         this.log("Identify requested!");
@@ -78,9 +79,9 @@ HTTP_FAN_V2.prototype = {
         const informationService = new Service.AccessoryInformation();
 
         informationService
-            .setCharacteristic(Characteristic.Manufacturer, "Andreas Bauer")
-            .setCharacteristic(Characteristic.Model, "HTTP Fan")
-            .setCharacteristic(Characteristic.SerialNumber, "FAN02")
+            .setCharacteristic(Characteristic.Manufacturer, "Samuel Boix")
+            .setCharacteristic(Characteristic.Model, "Fan Controller")
+            .setCharacteristic(Characteristic.SerialNumber, config.api)
             .setCharacteristic(Characteristic.FirmwareRevision, packageJSON.version);
 
         return [informationService, this.homebridgeService];
@@ -159,7 +160,7 @@ HTTP_FAN_V2.prototype = {
 
         let url = this.rotationSpeed.setUrl;
         if (url)
-            url = this.rotationSpeed.setUrl.replace("%s", rotationSpeed);
+            url = this.rotationSpeed.setUrl + "\" + rotationSpeed;
 
         this._doRequest("setRotationSpeed", url, this.rotationSpeed.httpMethod, "rotationSpeed.setUrl", callback, function (body) {
             this.log("rotationSpeed successfully set to %s %", rotationSpeed);
