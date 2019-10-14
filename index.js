@@ -1,5 +1,3 @@
-"use strict";
-
 let Service, Characteristic, api;
 
 const request = require("request");
