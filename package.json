@@ -1,6 +1,6 @@
 {
   "name": "homebridge-http-fancontrol",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Fan Controler for homebridge",
   "license": "ISC",
   "keywords": [
