@@ -1,5 +1,5 @@
 # homebridge-http-fan
-Homebridge Plugin to control a Fan
+Homebridge Plugin to control a Fan. This is a fork of homebridge-http-fancontrol with added readme/example and changed manufacturer data.
 ### Example config:
 ```
 {
