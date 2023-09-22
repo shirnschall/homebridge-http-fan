@@ -17,7 +17,7 @@ module.exports = function (homebridge) {
 function HTTP_FAN(log, config) {
     this.log = log;
     this.name = config.name;
-    this.api = config.api       ||      "XXX.XXX.XXX.XXX";
+    this.serial = config.serial       ||      "XXX.XXX.XXX.XXX";
 
     this.active = {};
     this.rotationSpeed = { enabled: false };
@@ -81,7 +81,7 @@ HTTP_FAN.prototype = {
         informationService
             .setCharacteristic(Characteristic.Manufacturer, "Hirnschall Technologies")
             .setCharacteristic(Characteristic.Model, "Smart Fan Controller")
-            .setCharacteristic(Characteristic.SerialNumber, config.api)
+            .setCharacteristic(Characteristic.SerialNumber, this.serial)
             .setCharacteristic(Characteristic.FirmwareRevision, packageJSON.version);
 
         return [informationService, this.homebridgeService];
