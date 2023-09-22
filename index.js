@@ -79,8 +79,8 @@ HTTP_FAN.prototype = {
         const informationService = new Service.AccessoryInformation();
 
         informationService
-            .setCharacteristic(Characteristic.Manufacturer, "Samuel Boix")
-            .setCharacteristic(Characteristic.Model, "Fan Controller")
+            .setCharacteristic(Characteristic.Manufacturer, "Hirnschall Technologies")
+            .setCharacteristic(Characteristic.Model, "Smart Fan Controller")
             .setCharacteristic(Characteristic.SerialNumber, config.api)
             .setCharacteristic(Characteristic.FirmwareRevision, packageJSON.version);
 
